@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import MainScreen from "./pages/main";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div className="container mx-auto">
+      <MainScreen />
+    </div>
+  );
+};
 
-export default App
+export default App;
