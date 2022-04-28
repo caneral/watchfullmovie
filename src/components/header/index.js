@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getSearchResults } from "../../redux/actions/movie/index";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();

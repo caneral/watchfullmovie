@@ -3,6 +3,7 @@ import Movie from "../../components/movie";
 import { getPopularMovies } from "../../redux/actions/movie";
 import { useDispatch, useSelector } from "react-redux";
 import PopularMovies from "../../components/popularMovie";
+import Header from "../../components/header";
 
 const MainScreen = () => {
   // Redux vars
@@ -25,7 +26,9 @@ console.log(popularMovies) //The Batman 414906
   };
 
   return (
-    <div className="flex">
+   <div>
+     <Header/>
+      <div className="flex">
       <div className="w-full flex flex-wrap">
         {renderMovies()}
       </div>
@@ -35,6 +38,7 @@ console.log(popularMovies) //The Batman 414906
         <div className="flex flex-wrap ">{renderPopularMovies()}</div>
       </div>
     </div>
+   </div>
   );
 };
 
