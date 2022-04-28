@@ -9,4 +9,6 @@ export const api = axios.create({
 });
 
 export const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
+export const ORIGINAL_IMAGE_PATH = "https://image.tmdb.org/t/p/original";
+
 

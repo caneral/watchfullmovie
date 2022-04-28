@@ -14,10 +14,10 @@ export const getPopularMovies = () => {
 
 // ** Get search results
 export const getSearchResults = (searchKey) => {
+  const params = {query: searchKey}
   return async (dispatch) => {
-    await movieApi.search({query: searchKey})
+    await movieApi.search(params)
       .then((response) => {
-        console.log("Dönen veriler:", response);
         dispatch({
           type: "GET_SEARCH_MOVIES",
           data: response.data,

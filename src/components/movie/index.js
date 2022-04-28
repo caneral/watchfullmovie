@@ -9,7 +9,7 @@ const Movie = ({
   profile_path,
 }) => {
   return (
-    <div className="p-2 sm:w-1/2 lg:w-1/3">
+    <div className="p-2 sm:w-1/2 lg:w-1/4">
       <div className="flex flex-col  border-2 border-opacity-10 border-gray-500 overflow-hidden rounded-lg">
         {poster_path ? (
           <img
