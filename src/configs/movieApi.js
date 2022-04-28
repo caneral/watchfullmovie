@@ -2,7 +2,7 @@ import { api } from "./api";
 const movieApi = {
     getPopularMoviesList: (params) => {
       const url = "movie/" + "popular";
-      return api.get(url, params);
+      return api.get(url,  {params: params});
     },
     getVideos: (id) => {
       const url = "movie/" + id + "/popular";
