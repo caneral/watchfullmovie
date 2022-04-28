@@ -23,7 +23,7 @@ const MainScreen = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <Header />
       <Hero/>
       <div className="flex">
