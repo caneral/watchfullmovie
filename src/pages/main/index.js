@@ -15,7 +15,7 @@ const MainScreen = () => {
 
   const popularMovies = store.data.results;
   const movies = store.searchData.results;
-
+console.log(popularMovies) //The Batman 414906
   console.log(movies);
   const renderPopularMovies = () => {
     return popularMovies?.map((movie, index) => <PopularMovies key={index} {...movie} />);

@@ -37,3 +37,22 @@ export const getSearchResults = (searchKey) => {
       });
   };
 };
+
+// ** Get movie
+export const getMovie = (searchKey) => {
+  return async (dispatch) => {
+    await api
+      .get("/movie/414906/videos", {
+        params: {
+          api_key: process.env.REACT_APP_MOVIE_KEY,
+        },
+      })
+      .then((response) => {
+        console.log("Dönen veriler:", response)
+        dispatch({
+          type: "GET_MOVIE",
+          data: response.data,
+        });
+      });
+  };
+};
