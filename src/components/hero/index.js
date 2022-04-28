@@ -43,7 +43,6 @@ const SlideItem = ({ movie, className }) => {
   const background = `${ORIGINAL_IMAGE_PATH}${
     movie.backdrop_path ? movie.backdrop_path : movie.poster_path
   }`;
-  console.log("DATA:", background);
 
   return (
     <div

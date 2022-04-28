@@ -3,13 +3,16 @@ import { getSearchResults } from "../../redux/actions/movie/index";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({scrollToTop}) => {
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState("");
 
   const search = (e) => {
     e.preventDefault();
-    dispatch(getSearchResults(searchKey));
+    if(e.keyCode === 13){
+      scrollToTop()
+      dispatch(getSearchResults(searchKey));
+    }
   };
   return (
     <header className="flex flex-wrap items-center m-2 h-16 absolute top-0 z-20 bottom-0 left-0 right-0 ">
@@ -21,7 +24,9 @@ const Header = () => {
           <input
             className="p-2 sm:p-3 placeholder:text-gray-400 placeholder:text-base rounded-3xl border-0 outline-none"
             placeholder="Search Movie"
+            maxLength={80}
             onChange={(e) => setSearchKey(e.target.value)}
+            onKeyUp={(e) => search(e)}
           />
         </form>
       </div>
