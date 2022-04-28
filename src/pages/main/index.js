@@ -18,7 +18,7 @@ const MainScreen = () => {
     return movies?.map((movie, index) => <Movie key={index} {...movie} />);
   };
 
-  return <div className="flex flex-wrap -m-4">
+  return <div className="flex flex-wrap">
       {renderMovies()}
       </div>;
 };
