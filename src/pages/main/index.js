@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header";
 import Hero from "../../components/hero";
 import movieApi from "../../configs/movieApi";
+import PersonCard from "../../components/person";
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -38,9 +39,15 @@ const MainScreen = () => {
   };
 
   const renderSearchList = () => {
-    return searchList
-      ?.filter((item) => item.title && item.poster_path)
-      .map((movie, index) => <Movie key={index} {...movie} />);
+    return searchList?.map((movie, index) => {
+      if (movie.media_type === "person") {
+          return movie.known_for?.filter((item) => item.poster_path && item.title).map((item, index) =>
+          <PersonCard key={index} {...item} />)
+      } else if(movie.media_type !== "tv" && movie.poster_path !== null) {
+
+        return <Movie key={index} {...movie} />;
+      }
+    });
   };
 
   const loadMore = async () => {
@@ -60,16 +67,19 @@ const MainScreen = () => {
       <Hero />
       <div ref={searchSection}>
         <h3 className="p-2 my-4 text-white font-semibold text-xl">
-          POPULAR MOVIES
+          { searchList?.length > 0 ? 'SEARCH RESULTS' :  'POPULAR MOVIES' }
         </h3>
         <div className="w-full flex flex-wrap">
           {searchList?.length > 0 ? renderSearchList() : renderPopularMovies()}
         </div>
       </div>
-      
-      { page < totalPage && searchList?.length === undefined  ? (
+
+      {page < totalPage && searchList?.length === undefined ? (
         <div className="flex justify-center ">
-          <button className="text-white rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white" onClick={loadMore}>
+          <button
+            className="text-white rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white"
+            onClick={loadMore}
+          >
             Load More
           </button>
         </div>

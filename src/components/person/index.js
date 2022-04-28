@@ -1,7 +1,7 @@
 import React from "react";
 import { IMAGE_PATH } from "../../configs/api";
 
-const Movie = ({
+const PersonCard = ({
   poster_path,
   title,
   vote_average,
@@ -37,4 +37,4 @@ const Movie = ({
   );
 };
 
-export default Movie;
+export default PersonCard;
