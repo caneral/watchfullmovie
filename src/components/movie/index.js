@@ -9,11 +9,11 @@ const Movie = ({
   profile_path,
 }) => {
   return (
-    <div className="p-2 sm:w-1/2 lg:w-1/4">
+    <div className="p-2 sm:w-1/2 lg:w-1/4 transform hover:scale-95 transition cursor-pointer">
       <div className="flex flex-col  border-2 border-opacity-10 border-gray-500 overflow-hidden rounded-lg">
         {poster_path ? (
           <img
-            className="w-full lg:h-64 md:h-24 object-cover object-center"
+            className="w-full lg:h-80 md:h-24 object-cover object-center"
             src={`${IMAGE_PATH}${poster_path}`}
             alt="image"
           />

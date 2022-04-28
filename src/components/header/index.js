@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getSearchResults } from "../../redux/actions/movie/index";
+import { getSearchResults, RESET_ACTION } from "../../redux/actions/movie/index";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,11 @@ const Header = ({scrollToTop}) => {
 
   const search = (e) => {
     e.preventDefault();
-    if(e.keyCode === 13){
+    if(e.keyCode === 13 && searchKey !== ""){
       scrollToTop()
       dispatch(getSearchResults(searchKey));
+    }else if(searchKey === ""){
+      dispatch(RESET_ACTION)
     }
   };
   return (

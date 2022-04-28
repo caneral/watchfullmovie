@@ -26,3 +26,7 @@ export const getSearchResults = (searchKey) => {
   };
 };
 
+// ** Reset
+export const RESET_ACTION = {
+  type: "RESET"
+}

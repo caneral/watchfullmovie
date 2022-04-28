@@ -19,7 +19,7 @@ const MainScreen = () => {
   }, [dispatch, store?.data.length]);
 
   const popularMovies = store.data.results;
-  const movies = store.searchData.results;
+  const searchList = store.searchData.results;
 
   const renderPopularMovies = () => {
     return popularMovies?.map((movie, index) => (
@@ -27,12 +27,20 @@ const MainScreen = () => {
     ));
   };
 
+  const renderSearchList = () => {
+    return searchList?.filter((item) => item.title && item.poster_path).map((movie, index) => (
+
+      <Movie key={index} {...movie} />
+    ))
+  }
+
   return (
     <div className="relative">
       <Header scrollToTop={scrollToTop} />
       <Hero/>
-      <div className="flex" ref={searchSection}>
-        <div className="w-full flex flex-wrap">{renderPopularMovies()}</div>
+      <div ref={searchSection}>
+        <h3 className="p-2 my-4 text-white font-semibold text-xl">POPULAR MOVIES</h3>
+        <div className="w-full flex flex-wrap">{ searchList?.length > 0 ?  renderSearchList() :  renderPopularMovies()}</div>
       </div>
     </div>
   );

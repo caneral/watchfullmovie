@@ -4,7 +4,7 @@ const initialState = {
   searchData: [],
   loading: false,
   error: "",
-  movieData: []
+  movieData: [],
 };
 
 const movies = (state = initialState, action) => {
@@ -15,6 +15,8 @@ const movies = (state = initialState, action) => {
       return { ...state, searchData: action.data };
     case "GET_MOVIE":
       return { ...state, movieData: action.data };
+    case "RESET":
+      return { ...state, searchData: [] };
     default:
       return { ...state };
   }

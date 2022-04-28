@@ -10,7 +10,7 @@ const movieApi = {
     },
     search: (params) => {
       const url = "search/" + "multi";
-      return api.get(url, params);
+      return api.get(url, {params: params});
     },
     detail: (id, params) => {
       const url = "popular/" + id;
