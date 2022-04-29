@@ -98,7 +98,7 @@ const MainScreen = () => {
         <div className="flex justify-center ">
           <Button
             variant="outlined"
-            className="rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white text-white"
+            className="rounded-3xl px-6 py-2 m-2  border-4 font-medium border-white text-white"
             onClick={() => loadMore()}
           >
             Load More
