@@ -12,12 +12,11 @@ const Cast = ({ category, id }) => {
   }, []);
 
   const casts = store.castData?.cast?.slice(0, 6);
-  console.log(casts);
 
   return (
     <div className="flex flex-wrap gap-3 ">
       {casts?.map((actor, index) => (
-          <button className="text-md ">{actor.name}</button>
+          <button key={index} className="text-md ">{actor.name}</button>
       ))}
      </div>
   );

@@ -30,6 +30,7 @@ const MainScreen = () => {
   useEffect(() => {
     dispatch(getPopularMovies());
     setData(store.data.results);
+    window.scroll(0, 0);
   }, [dispatch, store?.data.length]);
 
   const loading = store.loading;
@@ -101,7 +102,7 @@ const MainScreen = () => {
           </button>
         </div>
       ) : null}
-      <Footer/>
+      <Footer />
     </div>
   );
 };

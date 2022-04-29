@@ -5,6 +5,7 @@ const initialState = {
   searchData: [],
   detailData: [],
   castData: [],
+  videoData: [],
   loading: false,
   error: "",
   movieData: [],
@@ -20,6 +21,8 @@ const movies = (state = initialState, action) => {
       return { ...state, moreData: action.data };
     case "GET_THE_CAST":
       return { ...state, castData: action.data };
+    case "GET_MOVIE_VIDEO":
+      return { ...state, videoData: action.data };
     case "GET_SEARCH_MOVIES":
       return { ...state, searchData: action.data };
     case "GET_MOVIE":

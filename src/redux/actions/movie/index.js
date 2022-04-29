@@ -59,6 +59,18 @@ export const getCasts = (category, id) => {
   };
 };
 
+// ** Get videos
+export const getMovieVideos = (category, id) => {
+  return async (dispatch) => {
+    await movieApi.getVideos(category, id).then((response) => {
+      dispatch({
+        type: "GET_MOVIE_VIDEO",
+        data: response.data,
+      });
+    });
+  };
+};
+
 
 // ** Get search results
 export const getSearchResults = (searchKey) => {
