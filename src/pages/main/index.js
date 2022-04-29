@@ -10,6 +10,7 @@ import Hero from "../../components/hero";
 import movieApi from "../../configs/movieApi";
 import PersonCard from "../../components/person";
 import SkeletonLoading from "../../components/skeleton";
+import Footer from "../../components/footer";
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -74,11 +75,11 @@ const MainScreen = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <Header scrollToTop={scrollToTop} />
       <Hero />
       <div ref={searchSection}>
-        <h3 className="p-2 my-4 text-white font-semibold text-xl">
+        <h3 className="p-2 my-4  font-semibold text-xl">
           {searchList?.length > 0 ? "SEARCH RESULTS" : "POPULAR MOVIES"}
         </h3>
         <div className="w-full flex flex-wrap ">
@@ -93,13 +94,14 @@ const MainScreen = () => {
       {page < totalPage && searchList?.length === undefined ? (
         <div className="flex justify-center ">
           <button
-            className="text-white rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white"
+            className="rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white"
             onClick={() => loadMore()}
           >
             Load More
           </button>
         </div>
       ) : null}
+      <Footer/>
     </div>
   );
 };

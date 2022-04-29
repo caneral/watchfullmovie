@@ -8,7 +8,7 @@ import RootRoutes from "./router/RootRoutes";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="container mx-auto bg-[#191919] p-2 m-4 rounded-xl">
+      <div className="container mx-auto bg-[#191919] p-2 m-4 rounded-xl text-white">
         {/* <Header /> */}
         {/* <MainScreen /> */}
         {/* <MovieDetailScreen /> */}
