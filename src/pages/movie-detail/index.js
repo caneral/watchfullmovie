@@ -26,7 +26,7 @@ const MovieDetailScreen = () => {
   return (
     <div>
       <div className="relative ">
-        {!loading && movie.backdrop_path ?  (
+        {!loading && movie.backdrop_path ? (
           <div
             className="flex min-h-[50vh] py-10 bg-center bg-cover bg-no-repeat  before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-tr before:from-black"
             style={{
@@ -41,12 +41,12 @@ const MovieDetailScreen = () => {
                 src={`${IMAGE_PATH}${movie.poster_path}`}
               />
             </div>
-            <div className="w-2/3 px-8 relative">
+            <div className="md:w-2/3 px-8 relative">
               <div className="font-medium text-xl md:text-4xl mb-4">
                 <h1>{movie.title || movie.name}</h1>
               </div>
 
-              <div className="gap-4 flex my-2">
+              <div className="gap-4 flex flex-wrap my-2">
                 {movie.genres
                   ? movie.genres.map((item, index) => {
                       return (
@@ -60,7 +60,7 @@ const MovieDetailScreen = () => {
                     })
                   : null}
               </div>
-              <p className="">{movie.overview}</p>
+              <p>{movie.overview}</p>
               <div className="relative">
                 <h2 className="font-medium text-xl mt-2">Imdb</h2>
 

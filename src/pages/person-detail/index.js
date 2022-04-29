@@ -25,7 +25,7 @@ const PersonDetailScreen = () => {
   return (
     <div className="min-h-screen">
       <div className=" relative ">
-        {!loading && actor  ? (
+        {!loading && actor ? (
           <div className="flex min-h-[50vh] py-10 bg-center bg-cover bg-no-repeat  before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-tr before:from-black">
             <div className={`hidden md:block relative px-12`}>
               <img
@@ -33,11 +33,17 @@ const PersonDetailScreen = () => {
                 src={`  ${IMAGE_PATH}${actor?.profile_path}`}
               />
             </div>
-            <div className="w-2/3 px-8 relative">
+            <div className="md:w-2/3 px-8 relative">
               <div className="font-medium text-xl md:text-4xl mb-4">
                 <h1>{actor.name}</h1>
               </div>
-              <p className="">{actor.biography}</p>
+              <div>
+                <img
+                  className={`sm:hidden rounded-full float-left mx-2 w-32`}
+                  src={`  ${IMAGE_PATH}${actor?.profile_path}`}
+                />
+                <p>{actor.biography}</p>
+              </div>
               <div className="relative">
                 <h2 className="font-medium text-xl mt-2">Birthday</h2>
 
@@ -55,7 +61,7 @@ const PersonDetailScreen = () => {
           </SkeletonTheme>
         )}
       </div>
-      <MovieSlide/>
+      <MovieSlide />
       <Footer />
     </div>
   );

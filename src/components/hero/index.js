@@ -58,7 +58,7 @@ const SlideItem = ({ movie, active }) => {
 
   return (
     <div
-      className={`py-32 w-full  bg-center bg-cover bg-no-repeat rounded-lg 
+      className={`py-32 min-h-[90vh]  w-full  bg-center bg-cover bg-no-repeat rounded-lg 
       before:absolute before:top-0 before:left-0 before:w-full 
       before:h-full before:bg-gradient-to-tr before:from-black `}
       style={{ backgroundImage: `url(${background})` }}
@@ -70,7 +70,7 @@ const SlideItem = ({ movie, active }) => {
         </div>
         <div className={`hidden md:block relative px-12 `}>
           <img
-            className={`w-40 sm:w-40 md:w-80 lg:w-96 rounded-2xl `}
+            className={`  w-40 sm:w-40 md:w-80 lg:w-96 rounded-2xl `}
             src={`${IMAGE_PATH}${movie.poster_path}`}
           />
         </div>

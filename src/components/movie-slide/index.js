@@ -20,7 +20,7 @@ const MovieSlide = () => {
     dispatch(getMovieCredits(id));
   }, []);
 
-  const credits = store.movieCredit?.cast?.slice(0,10);
+  const credits = store.movieCredit?.cast?.slice(0, 10);
 
   return (
     <div>
@@ -51,8 +51,8 @@ const SlideItem = ({ movie }) => {
       <div className="flex items-center justify-around ">
         <div className={`md:block relative px-12 `}>
           <img
-            className={`md:w-44 lg:w-64 rounded-2xl `}
-            src={`${IMAGE_PATH}${movie?.poster_path }`}
+            className={`md:w-44 lg:w-64 rounded-2xl`}
+            src={`${IMAGE_PATH}${movie?.poster_path}`}
             alt={`${movie.title}`}
           />
         </div>
