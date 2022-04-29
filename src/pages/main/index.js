@@ -94,7 +94,7 @@ const MainScreen = () => {
         <div className="flex justify-center ">
           <button
             className="text-white rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white"
-            onClick={loadMore}
+            onClick={() => loadMore()}
           >
             Load More
           </button>

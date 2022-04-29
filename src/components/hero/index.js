@@ -5,12 +5,15 @@ import { IMAGE_PATH, ORIGINAL_IMAGE_PATH } from "../../configs/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css/bundle";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Hero = () => {
   SwiperCore.use([Autoplay]);
   // Redux vars
   const dispatch = useDispatch();
   const store = useSelector((state) => state.movies);
+  const loading = store.loading;
 
   useEffect(() => {
     dispatch(getPopularMovies());
@@ -29,9 +32,18 @@ const Hero = () => {
       >
         {movies?.map((movie, index) => (
           <SwiperSlide key={index}>
-            {({ isActive }) => (
-              <SlideItem movie={movie} active={`${isActive ? true : false}`} />
-            )}
+            {({ isActive }) =>
+              loading ? (
+                <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                  <Skeleton height={400} width={"100%"} count={1} />
+                </SkeletonTheme>
+              ) : (
+                <SlideItem
+                  movie={movie}
+                  active={`${isActive ? true : false}`}
+                />
+              )
+            }
           </SwiperSlide>
         ))}
       </Swiper>
