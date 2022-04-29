@@ -12,12 +12,12 @@ const movieApi = {
       const url = "search/" + "multi";
       return api.get(url, {params: params});
     },
-    detail: (id, params) => {
-      const url = "popular/" + id;
+    detail: (category, id, params) => {
+      const url = category + '/' + id;
       return api.get(url, params);
     },
-    credits: (id) => {
-      const url = "popular/" + id + "/credits";
+    credits: (category, id) => {
+      const url = category +'/'+ id + "/credits";
       return api.get(url, {params: {}});
     },
   };

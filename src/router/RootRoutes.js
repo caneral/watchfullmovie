@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainScreen from "../pages/main";
-import MovieDetailScreen from "../pages/movie";
+import MovieDetailScreen from "../pages/movie-detail";
 
 const RootRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<MainScreen />} />
-      <Route path="movie" element={<MainScreen />}/>
-      <Route path="movie/:movieId" element={<MovieDetailScreen />} />
+      <Route path="category" element={<MainScreen />} />
+      <Route path=":category/:id" element={<MovieDetailScreen />} />
 
       <Route
         path="*"

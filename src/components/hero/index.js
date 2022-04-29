@@ -58,7 +58,9 @@ const SlideItem = ({ movie, active }) => {
 
   return (
     <div
-      className={`py-32 w-full  bg-center bg-cover bg-no-repeat rounded-lg before:content-[""] before:absolute before:top-0 before:left-0 before:w-full before:h-full  after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-full before:bg-gradient-to-tr before:from-black `}
+      className={`py-32 w-full  bg-center bg-cover bg-no-repeat rounded-lg 
+      before:absolute before:top-0 before:left-0 before:w-full 
+      before:h-full before:bg-gradient-to-tr before:from-black `}
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className="flex items-center justify-around ">

@@ -3,6 +3,8 @@ const initialState = {
   data: [],
   moreData: [],
   searchData: [],
+  detailData: [],
+  castData: [],
   loading: false,
   error: "",
   movieData: [],
@@ -12,8 +14,12 @@ const movies = (state = initialState, action) => {
   switch (action.type) {
     case "GET_POPULER_MOVIES":
       return { ...state, data: action.data, loading: action.loading };
+    case "GET_MOVIE_DETAIL":
+      return { ...state, detailData: action.data, loading: action.loading };
     case "GET_MORE_POPULER_MOVIES":
       return { ...state, moreData: action.data };
+    case "GET_THE_CAST":
+      return { ...state, castData: action.data };
     case "GET_SEARCH_MOVIES":
       return { ...state, searchData: action.data };
     case "GET_MOVIE":
