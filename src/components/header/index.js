@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import { getSearchResults, RESET_ACTION } from "../../redux/actions/movie/index";
+import {
+  getSearchResults,
+  RESET_ACTION,
+} from "../../redux/actions/movie/index";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Input from "@mui/material/Input";
+import FormControl from '@mui/material/FormControl';
 
-const Header = ({scrollToTop}) => {
+const Header = ({ scrollToTop }) => {
   const dispatch = useDispatch();
   const [searchKey, setSearchKey] = useState("");
 
   const search = (e) => {
     e.preventDefault();
-    if(e.keyCode === 13 && searchKey !== ""){
-      scrollToTop()
+    if (e.keyCode === 13 && searchKey !== "") {
+      scrollToTop();
       dispatch(getSearchResults(searchKey));
-    }else if(searchKey === ""){
-      dispatch(RESET_ACTION)
+    } else if (searchKey === "") {
+      dispatch(RESET_ACTION);
     }
   };
   return (
@@ -22,15 +27,14 @@ const Header = ({scrollToTop}) => {
         WATCHFULLMOVIE
       </p>
       <div className="w-full sm:w-1/2  sm:justify-end flex justify-center">
-        <form onSubmit={search}>
-          <input
-            className="p-2 sm:p-3 text-black placeholder:text-gray-400 placeholder:text-base rounded-3xl border-0 outline-none"
+          <Input
+            className="bg-white  p-2 sm:px-4 sm:py-2 text-black placeholder:text-gray-400 placeholder:text-base rounded-3xl border-0 outline-none"
             placeholder="Search Movie"
             maxLength={80}
             onChange={(e) => setSearchKey(e.target.value)}
             onKeyUp={(e) => search(e)}
+            disableUnderline
           />
-        </form>
       </div>
     </header>
   );

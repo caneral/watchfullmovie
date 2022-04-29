@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCasts } from "../../redux/actions/movie";
+import Button from "@mui/material/Button";
 
 const Cast = ({ category, id }) => {
   //Redux vars
@@ -16,11 +17,13 @@ const Cast = ({ category, id }) => {
   return (
     <div className="flex flex-wrap gap-3 ">
       {casts?.map((actor, index) => (
-          <Link key={index} to={`/actor/${actor.id}`}>
-          <button className="text-md ">{actor.name}</button>
-          </Link>
+        <Link key={index} to={`/actor/${actor.id}`}>
+          <Button variant="text" color="inherit">
+            {actor.name}
+          </Button>
+        </Link>
       ))}
-     </div>
+    </div>
   );
 };
 

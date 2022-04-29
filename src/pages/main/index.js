@@ -11,6 +11,8 @@ import movieApi from "../../configs/movieApi";
 import PersonCard from "../../components/person";
 import SkeletonLoading from "../../components/skeleton";
 import Footer from "../../components/footer";
+import Button from '@mui/material/Button';
+
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -30,7 +32,7 @@ const MainScreen = () => {
   useEffect(() => {
     dispatch(getPopularMovies());
     setData(store.data.results);
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
   }, [dispatch, store?.data.length]);
 
   const loading = store.loading;
@@ -94,12 +96,13 @@ const MainScreen = () => {
 
       {page < totalPage && searchList?.length === undefined ? (
         <div className="flex justify-center ">
-          <button
-            className="rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white"
+          <Button
+            variant="outlined"
+            className="rounded-3xl px-4 py-2 m-2  border-4 font-medium border-white text-white"
             onClick={() => loadMore()}
           >
             Load More
-          </button>
+          </Button>
         </div>
       ) : null}
       <Footer />
