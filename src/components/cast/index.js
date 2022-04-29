@@ -16,8 +16,8 @@ const Cast = ({ category, id }) => {
   return (
     <div className="flex flex-wrap gap-3 ">
       {casts?.map((actor, index) => (
-          <Link  to={`/actor/${actor.id}`}>
-          <button key={index} className="text-md ">{actor.name}</button>
+          <Link key={index} to={`/actor/${actor.id}`}>
+          <button className="text-md ">{actor.name}</button>
           </Link>
       ))}
      </div>

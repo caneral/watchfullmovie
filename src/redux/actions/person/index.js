@@ -17,7 +17,22 @@ export const getPersonDetail = (id) => {
   };
 };
 
-
+// ** Get the movie credits for a person.
+export const getMovieCredits = (id) => {
+  return async (dispatch) => {
+    dispatch({
+      type: "LOADING",
+      loading: true
+    })
+    await movieApi.movieCredit(id).then((response) => {
+      dispatch({
+        type: "GET_THE_MOVIE_CREDIT",
+        data: response.data,
+        loading: false
+      });
+    });
+  };
+};
 
 
 
