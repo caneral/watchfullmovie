@@ -9,6 +9,7 @@ import Header from "../../components/header";
 import Hero from "../../components/hero";
 import movieApi from "../../configs/movieApi";
 import PersonCard from "../../components/person";
+import SkeletonLoading from "../../components/skeleton";
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -30,7 +31,7 @@ const MainScreen = () => {
     setData(store.data.results);
   }, [dispatch, store?.data.length]);
 
-  const popularMovies = store.data.results;
+  const loading = store.loading;
   const searchList = store.searchData.results;
   const totalPage = store.data.total_pages;
 
@@ -41,10 +42,10 @@ const MainScreen = () => {
   const renderSearchList = () => {
     return searchList?.map((movie, index) => {
       if (movie.media_type === "person") {
-          return movie.known_for?.filter((item) => item.poster_path && item.title).map((item, index) =>
-          <PersonCard key={index} {...item} />)
-      } else if(movie.media_type !== "tv" && movie.poster_path !== null) {
-
+        return movie.known_for
+          ?.filter((item) => item.poster_path && item.title)
+          .map((item, index) => <PersonCard key={index} {...item} />);
+      } else if (movie.media_type !== "tv" && movie.poster_path !== null) {
         return <Movie key={index} {...movie} />;
       }
     });
@@ -61,16 +62,31 @@ const MainScreen = () => {
     setPage(page + 1);
   };
 
+  const skeletonRender = () => {
+    return (
+      <div className="flex flex-wrap w-full">
+        <SkeletonLoading />
+        <SkeletonLoading />
+        <SkeletonLoading />
+        <SkeletonLoading />
+      </div>
+    );
+  };
+
   return (
     <div className="relative">
       <Header scrollToTop={scrollToTop} />
       <Hero />
       <div ref={searchSection}>
         <h3 className="p-2 my-4 text-white font-semibold text-xl">
-          { searchList?.length > 0 ? 'SEARCH RESULTS' :  'POPULAR MOVIES' }
+          {searchList?.length > 0 ? "SEARCH RESULTS" : "POPULAR MOVIES"}
         </h3>
-        <div className="w-full flex flex-wrap">
-          {searchList?.length > 0 ? renderSearchList() : renderPopularMovies()}
+        <div className="w-full flex flex-wrap ">
+          {loading
+            ? skeletonRender()
+            : searchList?.length > 0
+            ? renderSearchList()
+            : renderPopularMovies()}
         </div>
       </div>
 

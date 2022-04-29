@@ -3,10 +3,15 @@ import movieApi from "../../../configs/movieApi";
 // ** Get popular movies
 export const getPopularMovies = (params) => {
   return async (dispatch) => {
+    dispatch({
+      type: "LOADING",
+      loading: true
+    })
     await movieApi.getPopularMoviesList(params).then((response) => {
       dispatch({
         type: "GET_POPULER_MOVIES",
         data: response.data,
+        loading: false
       });
     });
   };
