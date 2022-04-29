@@ -2,6 +2,8 @@
   "name": "watchfullmovie",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Caner Al <caneral.js@gmail.com>",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
