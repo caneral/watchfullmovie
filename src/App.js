@@ -1,11 +1,18 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route } from "react-router-dom";
 import RootRoutes from "./router/RootRoutes";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="container mx-auto bg-[#191919] p-2 m-4 rounded-xl text-white">
+      <div className="container mx-auto bg-[#191919] py-4 px-2 my-2 rounded-xl text-white">
+        <Link to="/">
+          <p className="w-full sm:w-1/2 text-sm sm:text-xl font-bold  text-center sm:text-left ">
+            WATCHFULLMOVIE
+          </p>
+        </Link>
+      </div>
+      <div className="container mx-auto bg-[#191919] p-2 mb-4 rounded-xl text-white">
         <RootRoutes />
       </div>
     </BrowserRouter>
