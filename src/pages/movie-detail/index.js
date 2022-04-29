@@ -7,6 +7,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Cast from "../../components/cast";
 import VideoSection from "../../components/video";
 import Footer from "../../components/footer";
+
 const MovieDetailScreen = () => {
   // Redux vars
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const MovieDetailScreen = () => {
   return (
     <div>
       <div className="relative ">
-        {!loading ? (
+        {!loading && movie.backdrop_path ?  (
           <div
             className="flex min-h-[50vh] py-10 bg-center bg-cover bg-no-repeat  before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-tr before:from-black"
             style={{

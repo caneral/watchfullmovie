@@ -20,6 +20,10 @@ const movieApi = {
     const url = category + "/" + id + "/credits";
     return api.get(url, { params: {} });
   },
+  person: (id) => {
+    const url = "person" + "/" + id;
+    return api.get(url, { params: {} });
+  },
 };
 
 export default movieApi;
