@@ -6,7 +6,7 @@ import { IMAGE_PATH, ORIGINAL_IMAGE_PATH } from "../../configs/api";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Cast from "../../components/cast";
 import VideoSection from "../../components/video";
-
+import Footer from "../../components/footer";
 const MovieDetailScreen = () => {
   // Redux vars
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const MovieDetailScreen = () => {
 
   useEffect(() => {
     dispatch(getMovieDetail(category, id));
-    window.scroll(0,0);
+    window.scroll(0, 0);
   }, [dispatch, store?.detailData.length]);
 
   const movie = store?.detailData;
@@ -81,8 +81,10 @@ const MovieDetailScreen = () => {
       </div>
       {/* Video Section */}
       <div className="my-4">
-        <VideoSection/>
+        <VideoSection />
       </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

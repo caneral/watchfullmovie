@@ -11,19 +11,16 @@ const VideoSection = () => {
   const { category, id } = useParams();
 
   useEffect(() => {
-    console.log(category, id);
     dispatch(getMovieVideos(category, id));
-    
   }, []);
 
-  const videos = store.videoData?.results?.slice(0,3);
-  console.log(videos);
+  const videos = store.videoData?.results?.slice(0, 3);
 
   return (
     <div>
       {videos?.map((video, index) => {
         return (
-          <div>
+          <div key={index}>
             <h2 className="text-lg font-medium my-2">{video.name}</h2>
             <iframe
               className="w-full sm:h-80 md:h-96 lg:h-[500px]"

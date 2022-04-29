@@ -24,7 +24,7 @@ const Header = ({scrollToTop}) => {
       <div className="w-full sm:w-1/2  sm:justify-end flex justify-center">
         <form onSubmit={search}>
           <input
-            className="p-2 sm:p-3 placeholder:text-gray-400 placeholder:text-base rounded-3xl border-0 outline-none"
+            className="p-2 sm:p-3 text-black placeholder:text-gray-400 placeholder:text-base rounded-3xl border-0 outline-none"
             placeholder="Search Movie"
             maxLength={80}
             onChange={(e) => setSearchKey(e.target.value)}
