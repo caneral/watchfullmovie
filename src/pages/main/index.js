@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Movie from "../../components/movie";
-import { getPopularMovies } from "../../redux/actions/movie";
+import { getPopularMovies, RESET_ACTION } from "../../redux/actions/movie";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header";
 import Hero from "../../components/hero";
@@ -30,10 +30,11 @@ const MainScreen = () => {
   const [loadMoreLoading, setLoadMoreLoading] = useState(false);
 
   useEffect(() => {
+    dispatch(RESET_ACTION);
     dispatch(getPopularMovies());
     setData(store.data.results);
     // window.scroll(0, 0);
-    Aos.init({duration:2000})
+    Aos.init({ duration: 2000 });
   }, [dispatch, store?.data.length]);
 
   const loading = store.loading;
@@ -82,7 +83,7 @@ const MainScreen = () => {
     <div className="relative ">
       <Header scrollToTop={scrollToTop} />
       <Hero />
-      <div ref={searchSection} >
+      <div ref={searchSection}>
         <h3 className="p-2 my-4  font-semibold text-xl">
           {searchList?.length > 0 ? "SEARCH RESULTS" : "POPULAR MOVIES"}
         </h3>
