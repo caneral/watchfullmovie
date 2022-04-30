@@ -9,6 +9,7 @@ import PersonCard from "../../components/person";
 import SkeletonLoading from "../../components/skeleton";
 import Footer from "../../components/footer";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -94,11 +95,11 @@ const MainScreen = () => {
       {page < totalPage && searchList?.length === undefined ? (
         <div className="flex justify-center ">
           {loadMoreLoading ? (
-            "Loading..."
+            <CircularProgress />
           ) : (
             <Button
               variant="outlined"
-              className="rounded-3xl px-6 py-2 m-2  border-4 font-medium border-white text-white"
+              className="rounded-3xl px-10 py-2 m-2  border-2  border-white text-white"
               onClick={() => loadMore()}
             >
               Load More
