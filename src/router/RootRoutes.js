@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MainScreen from "../pages/main";
 import MovieDetailScreen from "../pages/movie-detail";
+import NotFound from "../pages/not-found";
 import PersonDetailScreen from "../pages/person-detail";
 
 const RootRoutes = () => {
@@ -10,14 +11,7 @@ const RootRoutes = () => {
       <Route path="/" element={<MainScreen />} />
       <Route path="actor/:id" element={<PersonDetailScreen />} />
       <Route path=":category/:id" element={<MovieDetailScreen />} />
-      <Route
-        path="*"
-        element={
-          <main className="min-h-screen">
-            <p>There's nothing here!</p>
-          </main>
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
