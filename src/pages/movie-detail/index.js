@@ -29,7 +29,6 @@ const MovieDetailScreen = () => {
 
   const movie = store?.detailData;
   const loading = store?.loading;
-  console.log(movie);
   return store.detailData.length !== 0 ? (
     <div>
       <div className="relative ">
