@@ -28,9 +28,16 @@ export const getMovieDetail = (category, id) => {
       dispatch({
         type: "GET_MOVIE_DETAIL",
         data: response.data,
-        loading: false
+        loading: false,
+        error: []
       });
-    });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "GET_MOVIE_DETAIL_REJECTED",
+        data: err.response
+      })
+    })
   };
 };
 

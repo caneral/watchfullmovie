@@ -7,7 +7,7 @@ const initialState = {
   castData: [],
   videoData: [],
   loading: false,
-  error: "",
+  error: [],
   movieData: [],
 };
 
@@ -16,7 +16,9 @@ const movies = (state = initialState, action) => {
     case "GET_POPULER_MOVIES":
       return { ...state, data: action.data, loading: action.loading };
     case "GET_MOVIE_DETAIL":
-      return { ...state, detailData: action.data, loading: action.loading };
+      return { ...state, detailData: action.data, loading: action.loading, error: action.error };
+    case "GET_MOVIE_DETAIL_REJECTED":
+      return { ...state, error: action.data, };
     case "GET_THE_CAST":
       return { ...state, castData: action.data };
     case "GET_MOVIE_VIDEO":
@@ -28,7 +30,7 @@ const movies = (state = initialState, action) => {
     case "LOADING":
       return { ...state, loading: action.loading };
     case "RESET":
-      return { ...state, searchData: [] };
+      return { ...state, searchData: [], error: [] };
     default:
       return { ...state };
   }

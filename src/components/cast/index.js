@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { getCasts } from "../../redux/actions/movie";
 import Button from "@mui/material/Button";
 
-const Cast = ({ category, id }) => {
+const Cast = ({id}) => {
   //Redux vars
   const dispatch = useDispatch();
   const store = useSelector((state) => state.movies);
 
   useEffect(() => {
-    dispatch(getCasts(category, id));
+    dispatch(getCasts('movie', id));
   }, []);
 
   const casts = store.castData?.cast?.slice(0, 6);

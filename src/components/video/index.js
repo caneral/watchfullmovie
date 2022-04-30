@@ -9,10 +9,10 @@ const VideoSection = () => {
   const dispatch = useDispatch();
   const store = useSelector((state) => state.movies);
 
-  const { category, id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getMovieVideos(category, id));
+    dispatch(getMovieVideos("movie", id));
   }, []);
 
   const videos = store.videoData?.results?.slice(0, 3);

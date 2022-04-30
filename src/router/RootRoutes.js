@@ -10,7 +10,7 @@ const RootRoutes = () => {
     <Routes>
       <Route path="/" element={<MainScreen />} />
       <Route path="actor/:id" element={<PersonDetailScreen />} />
-      <Route path=":category/:id" element={<MovieDetailScreen />} />
+      <Route path="movie/:id" element={<MovieDetailScreen />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -7,6 +7,9 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Cast from "../../components/cast";
 import VideoSection from "../../components/video";
 import Footer from "../../components/footer";
+import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 const MovieDetailScreen = () => {
   // Redux vars
@@ -14,16 +17,20 @@ const MovieDetailScreen = () => {
   const store = useSelector((state) => state.movies);
 
   // Route params
-  const { category, id } = useParams();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getMovieDetail(category, id));
+    dispatch(getMovieDetail('movie', id));
     window.scroll(0, 0);
-  }, [dispatch, store?.detailData.length]);
+    if (store?.detailData === null || store?.detailData === undefined)
+      navigate("*");
+  }, [dispatch, store?.detailData.length, store?.error.length]);
 
   const movie = store?.detailData;
   const loading = store?.loading;
-  return (
+  console.log(movie);
+  return store.detailData.length !== 0 ? (
     <div>
       <div className="relative ">
         {!loading && movie.backdrop_path ? (
@@ -69,7 +76,7 @@ const MovieDetailScreen = () => {
               <div className="relative">
                 <h2 className="font-medium text-xl my-4">Casts</h2>
                 <div>
-                  <Cast category={category} id={id} />
+                  <Cast id={id} />
                 </div>
               </div>
             </div>
@@ -85,6 +92,16 @@ const MovieDetailScreen = () => {
         <VideoSection />
       </div>
       {/* Footer */}
+      <Footer />
+    </div>
+  ) : (
+    <div className="min-h-screen ">
+      <div>
+        <Alert severity="error">
+          <AlertTitle>Movie not found</AlertTitle>
+          Please check link address
+        </Alert>
+      </div>
       <Footer />
     </div>
   );
