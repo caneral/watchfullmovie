@@ -23,7 +23,7 @@ const MovieSlide = () => {
     dispatch(getMovieCredits(id));
   }, []);
 
-  const credits = store.movieCredit?.cast?.slice(0, 10);
+  const credits = store.movieCredit?.cast?.slice(0, 10).filter((item) => item.poster_path);
   const loading = store.loading;
 
   return (
@@ -65,7 +65,7 @@ const SlideItem = ({ movie }) => {
         <div className={`md:block relative px-12 `}>
           <img
             className={`md:w-44 lg:w-64 rounded-2xl`}
-            src={`${IMAGE_PATH}${movie?.poster_path}`}
+            src={`${IMAGE_PATH}${movie.poster_path}`}
             alt={`${movie.title}`}
           />
         </div>

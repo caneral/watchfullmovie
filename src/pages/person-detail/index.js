@@ -28,9 +28,11 @@ const PersonDetailScreen = () => {
         {!loading && actor ? (
           <div className="flex min-h-[50vh] py-10 bg-center bg-cover bg-no-repeat  before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-tr before:from-black">
             <div className={`hidden md:block relative px-12`}>
+
               <img
                 className={` sm:w-64 md:w-80 lg:w-96 rounded-2xl `}
-                src={`  ${IMAGE_PATH}${actor?.profile_path}`}
+                src={` ${actor.profile_path === null ? 'https://durmazz.com/writable/uploads/products/default.jpg' : `${IMAGE_PATH}${actor?.profile_path}` }  `}
+                alt={actor.name}
               />
             </div>
             <div className="md:w-2/3 px-8 relative">
@@ -40,18 +42,18 @@ const PersonDetailScreen = () => {
               <div>
                 <img
                   className={`sm:hidden rounded-full float-left mx-2 w-32`}
-                  src={`  ${IMAGE_PATH}${actor?.profile_path}`}
+                  src={` ${actor.profile_path === null ? 'https://durmazz.com/writable/uploads/products/default.jpg' : `${IMAGE_PATH}${actor?.profile_path}` }  `}
                 />
-                <p>{actor.biography}</p>
+                <p>{actor.biography || "Information not found."}</p>
               </div>
               <div className="relative">
                 <h2 className="font-medium text-xl mt-2">Birthday</h2>
 
-                <div className="text-lg font-medium">{actor.birthday}</div>
+                <div className="text-lg font-medium">{actor.birthday || "Information not found."}</div>
               </div>
               <div className="relative">
                 <h2 className="font-medium text-xl my-4">Place Of Birth</h2>
-                {actor.place_of_birth}
+                {actor.place_of_birth || "Information not found."}
               </div>
             </div>
           </div>
