@@ -11,7 +11,7 @@ npm install
 npm start
 
 # Or if you use Yarn:
-yarn add 
+yarn 
 # and
 yarn start
 ```
