@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Movie from "../../components/movie";
-import {
-  getMorePopularMovies,
-  getPopularMovies,
-} from "../../redux/actions/movie";
+import { getPopularMovies } from "../../redux/actions/movie";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header";
 import Hero from "../../components/hero";
@@ -11,8 +8,7 @@ import movieApi from "../../configs/movieApi";
 import PersonCard from "../../components/person";
 import SkeletonLoading from "../../components/skeleton";
 import Footer from "../../components/footer";
-import Button from '@mui/material/Button';
-
+import Button from "@mui/material/Button";
 
 const MainScreen = () => {
   const searchSection = useRef(null);
@@ -28,6 +24,7 @@ const MainScreen = () => {
 
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
+  const [loadMoreLoading, setLoadMoreLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getPopularMovies());
@@ -60,8 +57,9 @@ const MainScreen = () => {
     const params = {
       page: page + 1,
     };
+    setLoadMoreLoading(true);
     response = await movieApi.getPopularMoviesList(params);
-
+    setLoadMoreLoading(false);
     setData([...data, ...response.data.results]);
     setPage(page + 1);
   };
@@ -76,7 +74,6 @@ const MainScreen = () => {
       </div>
     );
   };
-
   return (
     <div className="relative ">
       <Header scrollToTop={scrollToTop} />
@@ -96,13 +93,17 @@ const MainScreen = () => {
 
       {page < totalPage && searchList?.length === undefined ? (
         <div className="flex justify-center ">
-          <Button
-            variant="outlined"
-            className="rounded-3xl px-6 py-2 m-2  border-4 font-medium border-white text-white"
-            onClick={() => loadMore()}
-          >
-            Load More
-          </Button>
+          {loadMoreLoading ? (
+            "Loading..."
+          ) : (
+            <Button
+              variant="outlined"
+              className="rounded-3xl px-6 py-2 m-2  border-4 font-medium border-white text-white"
+              onClick={() => loadMore()}
+            >
+              Load More
+            </Button>
+          )}
         </div>
       ) : null}
       <Footer />

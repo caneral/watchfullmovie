@@ -34,19 +34,6 @@ export const getMovieDetail = (category, id) => {
   };
 };
 
-
-// ** Get load more movies
-export const getMorePopularMovies = (params) => {
-  return async (dispatch) => {
-    await movieApi.getPopularMoviesList(params).then((response) => {
-      dispatch({
-        type: "GET_MORE_POPULER_MOVIES",
-        data: response.data,
-      });
-    });
-  };
-};
-
 // ** Get the cast and crew for a movie
 export const getCasts = (category, id) => {
   return async (dispatch) => {

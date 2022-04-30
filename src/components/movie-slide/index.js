@@ -7,6 +7,9 @@ import "swiper/css/bundle";
 import { getMovieCredits } from "../../redux/actions/person";
 import { IMAGE_PATH } from "../../configs/api";
 
+// SKELETON LOADING
+import SkeletonLoading from "../skeleton";
+
 const MovieSlide = () => {
   SwiperCore.use([Autoplay]);
 
@@ -21,27 +24,37 @@ const MovieSlide = () => {
   }, []);
 
   const credits = store.movieCredit?.cast?.slice(0, 10);
+  const loading = store.loading;
 
   return (
-    <div>
-      <Swiper
-        modules={[Autoplay]}
-        grabCursor={false}
-        spaceBetween={0}
-        slidesPerView={3}
-        autoplay={{ delay: 4000 }}
-      >
-        {credits?.map((movie, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <Link to={`/movie/${movie.id}`}>
-                <SlideItem movie={movie} />
-              </Link>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </div>
+    <>
+      {loading ? (
+        <div className="flex flex-wrap justify-center">
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+          <SkeletonLoading />
+        </div>
+      ) : (
+        <Swiper
+          modules={[Autoplay]}
+          grabCursor={false}
+          spaceBetween={0}
+          slidesPerView={3}
+          autoplay={{ delay: 4000 }}
+        >
+          {credits?.map((movie, index) => {
+            return (
+              <SwiperSlide key={index}>
+                <Link to={`/movie/${movie.id}`}>
+                  <SlideItem movie={movie} />
+                </Link>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      )}
+    </>
   );
 };
 

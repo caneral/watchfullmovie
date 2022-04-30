@@ -17,8 +17,6 @@ const movies = (state = initialState, action) => {
       return { ...state, data: action.data, loading: action.loading };
     case "GET_MOVIE_DETAIL":
       return { ...state, detailData: action.data, loading: action.loading };
-    case "GET_MORE_POPULER_MOVIES":
-      return { ...state, moreData: action.data };
     case "GET_THE_CAST":
       return { ...state, castData: action.data };
     case "GET_MOVIE_VIDEO":
