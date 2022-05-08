@@ -62,4 +62,4 @@ yarn start
 
   
 
-[MIT](LICENSE.md)
+[MIT](LICENSE)
